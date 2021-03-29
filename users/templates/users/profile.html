@@ -1,0 +1,35 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+  Кабинет пользователя
+{% endblock %}
+
+{% block content %}
+  <h1>Кабинет пользователя</h1>
+  <div class="d-flex text-muted pt-3">
+      <img class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="64" height="64" src="{{ user.profile.img.url }}">
+      <p class="pb-3 mb-0 small lh-sm border-bottom">
+        <strong class="d-block text-gray-dark">@{{ user.username }}</strong>
+        {% if user.email %}
+         <b>Email:</b> {{ user.email }}
+        {% endif %}
+      </p>
+    </div>
+{% endblock %}
+
+{% block aside %}
+  <h4 class="mt-2">Интересные статьи</h4>
+  <img src="https://itproger.com/img/news/1591879929.jpg" class="img-thumbnail" alt="Картинка">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum consectetur exercitationem, suscipit commodi nobis similique!</p>
+
+  <a href="https://itproger.com/news/285" target="_blank">
+    <button class="btn btn-warning">Посмотреть</button>
+  </a>
+
+  <img src="https://itproger.com/img/news/1589893627.jpg" class="img-thumbnail mt-4" alt="Картинка">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, ipsa.</p>
+
+  <a href="https://itproger.com/news/285" target="_blank">
+    <button class="btn btn-warning">Посмотреть</button>
+  </a>
+{% endblock %}

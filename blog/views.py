@@ -1,21 +1,9 @@
 from django.shortcuts import render
+from .models import News
 
 def home(request):
-    news = [
-        {
-            'title': 'Наша первая статья',
-            'text': 'Полный текст статьи',
-            'date': '1 марта 2021 года',
-            'autor': 'Джон'
-        },
-        {
-            'title': 'Наша вторая статья',
-            'text': 'Полный текст статьи',
-            'date': '14 марта 2021 года',
-        }
-    ]
     data = {
-        'news': news,
+        'news': News.objects.all(),
         'title': 'Главная страница'
     }
 
