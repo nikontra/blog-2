@@ -30,15 +30,16 @@
           <button class="btn btn-outline-info">Войти</button>
         </a>
       {% else %}
-        <a href="{% url 'profile' %}">
+        <a href="{% url 'news-add' %}">
+          <button class="btn btn-outline-secondary">Добавить статью</button>
+        </a>
+        <a href="{% url 'profile' %}" class="ml-2">
           <button class="btn btn-outline-warning">Профиль</button>
         </a>
         <a href="{% url 'exit' %}" class="ml-2">
           <button class="btn btn-outline-info">Выйти</button>
         </a>
       {% endif %}
-
-
     </div>
   </nav>
   <div class="container mt-5">
