@@ -7,14 +7,14 @@
 {% block content %}
     <div class="alert alert-light">
       <h1>{{ object.title }}</h1>
-      <p>{{ object.text }}</p>
+      <p>{{ object.text|safe }}</p>
       <div class="row">
         <div>
           <img src="{{ object.autor.profile.img.url }}" alt="{{ object.autor }}" class="user_images">
         </div>
         <div class = "mt-2">
           <span class="text-muted">Публикация: {{ object.date|date:"d E Y в H:i" }}</span>
-          <p><b>Автор:</b> <mark>{{ object.autor }}</mark></p>
+          <p><b>Автор:</b> <a href="{% url 'user-news' object.autor %}">{{ object.autor }}</a></p>
         </div>
       </div>
       {% if object.autor == user %}
