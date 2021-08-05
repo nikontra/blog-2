@@ -1,0 +1,44 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+    <div class="alert alert-light">
+      <h1>{{ object.title }}</h1>
+      <p>{{ object.text|safe }}</p>
+      <div class="row">
+        <div>
+          <img src="{{ object.autor.profile.img.url }}" alt="{{ object.autor }}" class="user_images">
+        </div>
+        <div class = "mt-2">
+          <span class="text-muted">Публикация: {{ object.date|date:"d E Y в H:i" }}</span>
+          <p><b>Автор:</b> <a href="{% url 'user-news' object.autor %}">{{ object.autor }}</a></p>
+        </div>
+      </div>
+      {% if object.autor == user %}
+      <hr>
+      <a href="{% url 'news-update' object.id %}" class="btn btn-info">Обновить статью</a>
+      <a href="{% url 'news-delete' object.id %}" class="btn btn-danger">Удалить статью</a>
+      {% endif %}
+    </div>
+{% endblock %}
+
+
+{% block aside %}
+  <h4 class="mt-2">Интересные статьи</h4>
+  <img src="https://itproger.com/img/news/1589893627.jpg" class="img-thumbnail" alt="Картинка">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, ipsa.</p>
+
+  <a href="https://itproger.com/news/285" target="_blank">
+    <button class="btn btn-warning">Посмотреть</button>
+  </a>
+
+  <img src="https://itproger.com/img/news/1591879929.jpg" class="img-thumbnail mt-4" alt="Картинка">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum consectetur exercitationem, suscipit commodi nobis similique!</p>
+
+  <a href="https://itproger.com/news/285" target="_blank">
+    <button class="btn btn-warning">Посмотреть</button>
+  </a>
+{% endblock %}

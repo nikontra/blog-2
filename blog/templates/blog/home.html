@@ -1,0 +1,62 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block content %}
+  {% for post in news %}
+    <div class="alert alert-light">
+      <h1>{{ post.title }}</h1>
+      <p>{{ post.text|striptags|truncatechars:200 }}</p>
+      <div class="row">
+        <div>
+          <img src="{{ post.autor.profile.img.url }}" alt="{{ post.autor }}" class="user_images">
+        </div>
+        <div class = "mt-2">
+          <span class="text-muted">Публикация: {{ post.date|date:"d E Y в H:i" }}</span>
+          <p><b>Автор:</b> <a href="{% url 'user-news' post.autor %}">{{ post.autor }}</a></p>
+        </div>
+      </div>
+      <a href="{% url 'news-detail' post.id %}" class='btn btn-outline-warning mt-3'>Читать далее</a>
+    </div>
+  {% endfor %}
+
+  {% if is_paginated %}
+    {% if page_obj.has_previous %}
+      <a href="{% url 'home' %}" class="btn btn-outline-info">Начало</a>
+      <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-info">Назад</a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+      {% if num == page_obj.number %}
+        <button class="btn btn-info">{{ num }}</button>
+      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <a href="?page={{ num }}" class="btn btn-outline-info">{{ num }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if page_obj.has_next %}
+      <a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-info">Вперед</a>
+      <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-info">В конец</a>
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+
+{% block aside %}
+  <h4 class="mt-2">Интересные статьи</h4>
+  <img src="https://itproger.com/img/news/1589893627.jpg" class="img-thumbnail" alt="Картинка">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, ipsa.</p>
+
+  <a href="https://itproger.com/news/285" target="_blank">
+    <button class="btn btn-warning">Посмотреть</button>
+  </a>
+
+  <img src="https://itproger.com/img/news/1591879929.jpg" class="img-thumbnail mt-4" alt="Картинка">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum consectetur exercitationem, suscipit commodi nobis similique!</p>
+
+  <a href="https://itproger.com/news/285" target="_blank">
+    <button class="btn btn-warning">Посмотреть</button>
+  </a>
+{% endblock %}
