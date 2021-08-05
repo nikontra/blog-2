@@ -26,7 +26,7 @@ SECRET_KEY = '52n^%puemjd*r*)czl#6w18=07w*6flpzha9^o&xgyeocmadif'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['nikontra-django-blog.herokuapp.com']
 
 
 # Application definition
