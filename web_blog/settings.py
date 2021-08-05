@@ -130,6 +130,7 @@ EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'nikontra@yandex.ru'
 EMAIL_HOST_PASSWORD = 'ganblnbnaxorcmwx'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
